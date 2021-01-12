@@ -28,8 +28,6 @@ namespace _5_Smallest_Number
                     }
                     counter++;
                 }
-                if (counter == limit)
-                    break;
                 counter = 2;
 
             }
