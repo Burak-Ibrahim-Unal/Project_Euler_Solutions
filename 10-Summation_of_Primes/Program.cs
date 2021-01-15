@@ -12,41 +12,32 @@ namespace ConsoleApp1
         {
           /* The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
             Find the sum of all the primes below two million.*/
-            long forlimit=110000,counter=0,sum=0,sumlimit=10;
-            bool prime=true;
-            for (int i = 2; i <= forlimit; i++)
+            long number = 2000000;
+            List<long> primeList = new List<long>();
+            primeList.Add(2);
+            long total = 2;
+            for (long i = 3; i <= number; i += 2)
             {
-                if (i==2)
+                bool isPrimeNumber = false;
+                foreach (long j in primeList)
                 {
-                    System.Console.WriteLine("{0}th prime number is: {1}",++counter,i);
-                    sum+=i;
-                    continue;
-                }
-                for (long j = 2; j < i; j++)
-                {
-                    while (j<i)
+                    if (i % j == 0)
                     {
-                        if (i%j!=0)
-                        {
-                            j++;
-                            prime=true;
-                        }
-                        else{
-                            prime=false;
-                            break;
-                        }
-                    }
-                    if (prime && i<10)
-                    {
-                        System.Console.WriteLine("{0}th prime number is: {1}",++counter,i);
-                        sumlimit+=i;
+                        isPrimeNumber = false;
+                        break;
                     }
                     else
                     {
-                        break;
+                        isPrimeNumber = true;
                     }
                 }
+                if (isPrimeNumber)
+                {
+                    primeList.Add(i);
+                    total += i;
+                }
             }
+            Console.WriteLine(total);
         }
     }
 }
